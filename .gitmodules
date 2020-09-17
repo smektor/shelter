@@ -1,0 +1,3 @@
+[submodule "docker_rails_env"]
+	path = docker_rails_env
+	url = https://github.com/smektor/docker_rails_env.git

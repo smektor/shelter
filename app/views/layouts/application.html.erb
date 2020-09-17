@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shelter</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header id="mainheader" class="site-header">
+      <div class="container">
+        <nav class="navbar">
+          <div class="menu">
+
+            <ul>
+              <% if member_signed_in?%>
+                <li><%=link_to "Dodaj post", root_path %></li>
+                <li><%=link_to "Profil", current_member %></li>
+                <li><%=link_to "Wyloguj się", destroy_member_session_path, method: :delete %></li>
+              <% else %>
+                <li class="join"><%=link_to "Dołącz", new_member_registration_path %></li>
+                <li class="login"><%= link_to "Zaloguj się", new_member_session_path %></li>
+              <% end %>
+            </ul>
+         </div>
+        </nav>
+      </div>
+    </header>
+
+    <% if notice %>
+      <p class="notice"><%= notice %></p>
+    <% elsif alert %>
+      <p class="alert"><%= alert %></p>
+    <% end %>
+
+    <%= yield %>
+
+    <div class="footer">
+      <div class="footer-container">
+        <p>Copyright © 2020 Shelter, Inc</p>
+      </div>
+    </div>
+  </body>
+</html>
